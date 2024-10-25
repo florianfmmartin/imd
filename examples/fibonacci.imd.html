@@ -1,0 +1,25 @@
+<hr>
+<h2>core: deno run -A ./cores/deno.ts -- $FILE</h2>
+<h1>Fibonacci</h1>
+<p>Hi I'll implement fibonacci in deno</p>
+<h2>Recursrively</h2>
+<pre><code class="language-ts">const fib_rec = (n) => n &#x3C; 2 ? n : fib_rec(n-1) + fib_rec(n-2);
+</code></pre>
+<h2>With cache</h2>
+<pre><code class="language-ts">let cache_fib = {};
+const fib = (n) => {
+    try { return cache_fib[n] }
+    catch {
+        const r = fib(n-1) + fib(n-2)
+        cache_fib[n] = r
+        return r
+    }
+}
+</code></pre>
+<h2>Test</h2>
+<pre><code class="language-ts">const test = (str) => {
+    console.log(`TEST: ${str} ==> ${eval(str)}`)
+}
+
+test("fib_rec(18) == fib(18)")
+</code></pre>
