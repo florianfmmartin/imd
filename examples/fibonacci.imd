@@ -1,5 +1,5 @@
 ---
-core: deno run -A ./cores/deno.ts -- $FILE
+core: deno run $FILE
 ---
 
 # Fibonacci
