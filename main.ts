@@ -94,11 +94,17 @@ const exec = async (f: string) => {
     "$FILE",
     `./${outfile}`,
   ).split(" ")!;
+
   const out = new Deno.Command(command[0], { args: command.slice(1) });
   const { code, stdout, stderr } = await out.output();
-  console.assert(code === 0);
-  console.log(new TextDecoder().decode(stdout));
-  console.error(new TextDecoder().decode(stderr));
+
+  if (code === 0) {
+    console.log("Success :)");
+    console.log(new TextDecoder().decode(stdout));
+  } else {
+    console.log("Failed :(");
+    console.log(new TextDecoder().decode(stderr));
+  }
 };
 
 const main = async () => {
@@ -114,8 +120,10 @@ const main = async () => {
 
   if (cmd == "show") {
     await show(file);
-  } else {
+  } else if (cmd == "exec") {
     await exec(file);
+  } else if (cmd == "edit") {
+    await edit(file)
   }
 };
 
