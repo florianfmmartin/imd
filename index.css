@@ -1,0 +1,43 @@
+:root {
+    --bg: #eee;
+    --fg: #333;
+    --code-bg: #ddd;
+    --accent: #797;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+    max-width: 800px;
+    margin: auto;
+}
+
+pre > code {
+    background: var(--code-bg);
+    color: var(--accent);
+    padding: 0.75rem;
+    display: block;
+    border-radius: 0.3rem;
+    width: auto;
+    white-space: pre-wrap;
+    max-width: 100%;
+}
+
+code {
+    background: var(--code-bg);
+    color: var(--accent);
+    padding: 1px 6px;
+    border-radius: 3px;
+}
+
+.content {
+    max-width: 800px;
+    margin: auto;
+    padding: 1rem;
+}
+
+li {
+    margin-top: 0.5rem;
+}

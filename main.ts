@@ -3,51 +3,7 @@ import { Renderer } from "jsr:@libs/markdown";
 const help =
   "imd [cmd] [file]\n\tcmd\t`show` or `exec`\n\tfile\tpath to the `.imd` notebook";
 const cmds = ["show", "exec", "edit"];
-const css = `
-:root {
-    --bg: #eee;
-    --fg: #333;
-    --code-bg: #ddd;
-    --accent: #797;
-    font-family: monospace;
-    font-size: 16px;
-}
-
-body {
-    background: var(--bg);
-    color: var(--fg);
-    max-width: 800px;
-    margin: auto;
-}
-
-pre > code {
-    background: var(--code-bg);
-    color: var(--accent);
-    padding: 0.75rem;
-    display: block;
-    border-radius: 0.3rem;
-    width: auto;
-    white-space: pre-wrap;
-    max-width: 100%;
-}
-
-code {
-    background: var(--code-bg);
-    color: var(--accent);
-    padding: 1px 6px;
-    border-radius: 3px;
-}
-
-.content {
-    max-width: 800px;
-    margin: auto;
-    padding: 1rem;
-}
-
-li {
-    margin-top: 0.5rem;
-}
-`;
+const css = await Deno.readTextFile("./index.css")
 
 const run = async (c: string) => {
   const cs = c.split(" ");
@@ -105,6 +61,21 @@ const exec = async (f: string) => {
     console.log("Failed :(");
     console.log(new TextDecoder().decode(stderr));
   }
+};
+
+const edit = async (f: string) => {
+  const server = Deno.serve((req) => {
+    const path = req.url.split("/").slice(3)
+    if (path.length == 0) {
+      // HOME
+    }
+    if (path[0] == "exec") {
+      // exec code
+    }
+  });
+  const { hostname, port } = server.addr
+  const url = `http://${hostname}:${port}`
+  await run(`xdg-open ${url}`);
 };
 
 const main = async () => {
