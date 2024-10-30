@@ -10,7 +10,7 @@ Notebooks are nice, but so complex for no reasons.
 
 See [the main example](./examples/fibonacci.imd) and its ouputs.
 
-### IMD is a simple solution
+## IMD is a simple solution
 
 1. Write a `.md` file
 1. Use a yaml frontmatter with an attribute of key `core`
