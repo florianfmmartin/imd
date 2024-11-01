@@ -23,8 +23,13 @@ for (const line of content.split("\n")) {
 const outfile = `${f}.${lang}`;
 await Deno.writeTextFile(outfile, output);
 
-// TODO: match --- 's to make sur we're in frontmatter
-const command: string[] = content.match(/core: (.*)/)?.[1].replace(
+// extract front matter
+const lines = content.split("\n").map((c, i) => [i, c]);
+const [metaStart, metaEnd] = lines.filter(([_, c]) => c == "---").map(([i, _]) => i);
+// @ts-ignore typing tuples is a pain in TS
+const core = lines.filter(([i, c]) => c.startsWith("core: ") && metaStart < i && i < metaEnd).at(0).at(1).slice(6)
+
+const command = core.replace(
   "$FILE",
   `./${outfile}`,
 ).split(" ")!;
