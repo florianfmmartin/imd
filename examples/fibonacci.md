@@ -1,10 +1,6 @@
----
-core: deno run $FILE
----
-
 # Fibonacci
 
-Hi I'll implement fibonacci in deno
+Hi I'll implement fibonacci in Deno
 
 ## Recursrively
 
@@ -36,3 +32,11 @@ const test = (str) => {
 
 test("fib_rec(18) == fib(18)")
 ```
+
+### IMD core
+
+```core
+#!/bin/sh
+deno run -A {{NOTEBOOK}}
+```
+
