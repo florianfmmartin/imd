@@ -4,19 +4,20 @@ Interactive MarkDown
 
 ## Why?
 
-Notebooks are nice, but so complex for no reasons.
+Notebooks are nice.
+But there is little standard formats.
+Jupyter Notebooks are big JSON files which are note easy to read for humans.
+IMD leverages `.md` files to create self-contained notebooks.
 
 ## Examples
 
-See [the main example](./examples/fibonacci.imd) and its ouputs.
+See [the main example](./examples/) and its ouputs.
 
 ## IMD is a simple solution
 
 1. Write a `.md` file
-1. Use a yaml frontmatter with an attribute of key `core`
-1. The value from this attribute is a shell cmd to execute
-1. Run `imd` it will strip out the code blocks and make an output file
-1. The name of the output file is the name of the `.md` notebook plus the lang following the first code block
-1. `imd` will set a env var named `IMD_TMP` with the output file
-1. `imd` will run the shell cmd
+2. Put your code in triple ticks code blocks with a language tag
+3. Put a triple tick code blocks with `core` as the language tag
+4. You may use `{{NOTEBOOK}}` in your core, it's replaced with the name of the notebook code output: `notebook.md.LANG`
+5. Use `imd` on the notebook to run it
 

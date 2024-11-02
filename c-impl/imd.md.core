@@ -1,2 +1,2 @@
 #!/bin/sh
-gcc c-impl/imd.md.c -o imd
+gcc c-impl/imd.md.c -o bin/imd-c

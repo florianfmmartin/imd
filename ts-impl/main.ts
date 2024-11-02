@@ -40,7 +40,7 @@ const codefile = `${f}.${lang}`;
 await Deno.writeTextFile(codefile, code_output);
 
 const corefile = `${f}.core`;
-await Deno.writeTextFile(corefile, core_output.replace("{{NOTEBOOK}}", codefile));
+await Deno.writeTextFile(corefile, core_output.replaceAll("{{NOTEBOOK}}", codefile));
 
 
 await (new Deno.Command("chmod", { args: ["+x", corefile] })).output()

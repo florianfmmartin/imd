@@ -16,6 +16,6 @@ int main(void) {
 
 ```core
 #!/bin/sh
-gcc {{NOTEBOOK}} -o imd
+gcc {{NOTEBOOK}} -o bin/imd-c
 ```
 
