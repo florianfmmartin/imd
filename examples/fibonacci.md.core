@@ -1,2 +1,2 @@
 #!/bin/sh
-deno run -A examples/fibonacci.md.ts
+deno run -A ./examples/fibonacci.md.ts
